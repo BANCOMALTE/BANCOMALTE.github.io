@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>AllScan</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+
+    /* 
+
+            Tramite queste variabili è possibile personalizzare i parametri della query che verrà effettuata
+
+            token (string): token Unwired Labs
+            radio (string): tecnologia radio
+            mcc (int): codice paese
+            mnc (int): codice operatore
+            lac (int): location area code (default: 1)
+            cid (int): cell id da richiedere al servizio
+            psc (int): primary scrambling code (default: 0)
+            address (boolean): impostare a 1 per richiedere anche l'indirizzo, altrimenti 0
+
+    */
+
+    function AllScan() {
+        var token = $("#token").val(),
+            radio = '"lte"',
+            mcc = $("#mcc").val(),
+            mnc = $("#mnc").val(),
+            lac = 1,
+            startcid = $("#startcid").val(),
+            stopcid = $("#stopcid").val(),
+            enodeb = $("#enodeb").val(),
+            psc = 0,
+            address = 1;
+
+        if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
+            if(enodeb != "" && enodeb > 0){
+                startcid = enodeb * 256;
+                stopcid = enodeb * 256 + 21;
+            }
+
+            $("#result").html("");
+
+            for(var cid = startcid; cid <= stopcid; cid++) {
+                var request = {
+                    "async": false,
+                    "crossDomain": true,
+                    "url": "https://eu1.unwiredlabs.com/v2/process.php",
+                    "method": "POST",
+                    "headers": {},
+                    "processData": false,
+                    "data": "{\"token\":" + token + ", \"radio\": " + radio + ", \"mcc\": " + mcc + ", \"mnc\": " + mnc + ", \"cells\": [{ \"lac\": " + lac + ", \"cid\": " + cid + ", \"psc\": " + psc + " }], \"address\": " + address + "}"
+                }
+
+                $.ajax(request).done(function (APIresponse) {
+                    //se query ok
+                    enodeb_c = parseInt(cid/256);
+                    sec = cid - (enodeb_c * 256);
+
+                    if(APIresponse.status == "ok") {
+                        html = "<div class='col-2'>";
+                        html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />"
+                        html += "</div>";
+
+                        $("#result").append(html);
+                    }
+                    //altrimenti, messaggio di errore
+                    else {
+                        html = "<div class='col-2'>";
+                        html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+                        html += "<i>Not found</i> <br /><br />";
+                        html += "</div>";
+
+                        $("#result").append(html);
+                    }
+                });
+            }
+        }else {
+            alert("Start CID must be <= than stop CID");
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid pt-2">
+        <input type="number" id="mcc" placeholder="MCC" required>
+        <input type="number" id="mnc" placeholder="MNC" required>
+        <input type="number" id="startcid" placeholder="Start CID" required>
+        <input type="number" id="stopcid" placeholder="Stop CID" required>
+        <input type="number" id="enodeb" placeholder="Enodeb" required>
+        <input type="text" id="token" placeholder="Token" required>
+
+        <button onclick="AllScan()">Go</button>
+
+        <div id="result" class="row pt-2"></div>
+    </div>
+</body>
+</html>
