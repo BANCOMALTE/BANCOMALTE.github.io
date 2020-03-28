@@ -29,7 +29,7 @@
 
     function AllScan() {
         var token = $("#token").val(),
-            radio = '"lte"',
+            radio = $("#radio").val(),
             mcc = $("#mcc").val(),
             mnc = $("#mnc").val(),
             lac = 1,
@@ -102,6 +102,12 @@
         <input type="number" id="stopcid" placeholder="Stop CID" required>
         <input type="number" id="enodeb" placeholder="Enodeb" required>
         <input type="text" id="token" placeholder="Token" required>
+        <select id="radio">
+            <option value='"lte"'>LTE</option>
+            <option value='"umts"'>UMTS</option>
+            <option value='"gsm"'>GSM</option>
+            
+          </select>
 
         <button onclick="AllScan()">Go</button>
 
