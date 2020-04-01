@@ -69,8 +69,10 @@
                         html += "<b>CID:</b> " + cid + "<br />";
                         html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
                         html += "<b>SECTOR:</b> " + sec + "<br />";
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
                         html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
-                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />"
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
                         html += "</div>";
 
                         $("#result").append(html);
