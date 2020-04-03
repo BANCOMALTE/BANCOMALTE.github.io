@@ -51,7 +51,12 @@
                  } else if(carrier == "timHUAWEI") { startcid = enodeb * 256;
                     stopcid = enodeb * 256 + 39;
                 
-                 } else {
+                 } else if(carrier == "timHUAWEIB1"){
+                     startcid = enodeb * 256 + 250;
+                stopcid = enodeb * 256 + 253;
+                     
+                 } else {    
+           
 
 
                 startcid = enodeb * 256;
@@ -128,6 +133,7 @@
         <select id="carrier">
             <option value= "vf" >VF</option>
             <option value= "timHUAWEI" >TIMHUAWEI</option>
+            <option value= "timHUAWEIB1" >TIMHUAWEIB1</option>
             <option value= "tim" >TIMNOKIA</option>
             <option value= "w3" >W3</option>
             
