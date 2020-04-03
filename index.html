@@ -36,14 +36,22 @@
             startcid = $("#startcid").val(),
             stopcid = $("#stopcid").val(),
             enodeb = $("#enodeb").val(),
+            carrier = $("#carrier").val(),
             psc = 0,
             address = 1;
 
         if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
-            if(enodeb != "" && enodeb > 0){
+            if(carrier == "w3"){
                 startcid = enodeb * 256;
                 stopcid = enodeb * 256 + 21;
-            }
+              
+                }else if (carrier == "vf") {
+                startcid = enodeb * 256;
+                stopcid = enodeb * 256 + 54;
+                 } else { startcid = enodeb * 256;
+                    stopcid = enodeb * 256 + 64;
+                
+                 }
 
             $("#result").html("");
 
@@ -109,6 +117,13 @@
             <option value='"lte"'>LTE</option>
             <option value='"umts"'>UMTS</option>
             <option value='"gsm"'>GSM</option>
+            
+          </select>
+        
+        <select id="carrier">
+            <option value= "vf" >VF</option>
+            <option value= "tim" >TIM</option>
+            <option value= "w3" >W3</option>
             
           </select>
 
