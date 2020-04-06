@@ -56,8 +56,10 @@
                      startcid = enodeb * 256 + 250;
                 stopcid = enodeb * 256 + 253;
                      
-                 } else {    
-           
+                 } else if(carrier == "h3g") {    
+             startcid = enodeb * 256;
+                stopcid = enodeb * 256 + 6;
+                      } else {
 
 
                 startcid = enodeb * 256;
@@ -136,6 +138,7 @@
             <option value= "timHUAWEI" >TIMHUAWEI</option>
             <option value= "timHUAWEIB1" >TIMHUAWEIB1</option>
             <option value= "tim" >TIMNOKIA</option>
+            <option value= "h3g" >H3G ITALIA</option>
             <option value= "w3" >W3</option>
             
           </select>
