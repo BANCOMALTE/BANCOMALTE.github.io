@@ -41,6 +41,7 @@
             address = 1;
 
         if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
+            if(enodeb != "" && enodeb > 0){
            if(carrier == "w3"){
                 startcid = enodeb * 256;
                 stopcid = enodeb * 256 + 21;
@@ -61,7 +62,7 @@
 
                 startcid = enodeb * 256;
                 stopcid = enodeb * 256 + 64;
-                 }
+                 }}
 
             $("#result").html("");
 
