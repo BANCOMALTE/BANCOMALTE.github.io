@@ -220,6 +220,29 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
                 }
               });
 
+        
+         const maps = [streets]; 
+        const resetcontrol = L.Control.extend({
+
+    options: {
+        position: 'topleft'
+    },
+    onAdd: function () {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.style.cursor= 'pointer';
+        container.innerHTML = '<a class="darkmodetoggle"><i class="material-icons">delete</i></a>';
+
+        container.onclick = function () {
+          map.eachLayer(function (layer) {
+            if(!maps.includes(layer))
+              map.removeLayer(layer);
+          });
+        };
+        return container;
+    },
+
+});
+map.addControl(new resetcontrol);
         </script>
 </body>
 </html>
