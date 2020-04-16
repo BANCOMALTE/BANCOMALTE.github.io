@@ -20,9 +20,11 @@
         <style>
         #map { height: 560px; width: 100%; }
         body { margin:20px; padding:20px; }
-    </style>
-        <style> 
+    
 .card { min-width: 200px }
+             .form-control, button {max-width: 150px;
+            margin:10px;}
+		.form-row { justify-content: center; }
 </style>
         
         
@@ -146,8 +148,7 @@
 </head>
 <body>
     <div class="form-row">
-    <div class="col">
-    <div class="container-fluid pt-2">
+   
         <input type="number" class="form-control" id="mcc" placeholder="MCC" required>
         <input type="number" class="form-control" id="mnc" placeholder="MNC" required>
         <input type="number" class="form-control" id="startcid" placeholder="Start CID" required>
@@ -173,11 +174,12 @@
           </select>
 
         <button onclick="AllScan()">Go</button>
+        </div>
 
+         <div class="container-fluid pt-2 pb-2">  
         <div id="result" class="row pt-2"></div>
     </div>
-    </div>
-    </div>
+ 
     <div id="map"></div>
     
     <script>
