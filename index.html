@@ -80,7 +80,10 @@
                       } else if(carrier == "iliad") {
                 startcid = enodeb * 256 + 21;
                 stopcid = enodeb * 256 + 83;  
-                } else    {
+                } else if(carrier == "timers") {
+			startcid = enodeb * 256 + 1;
+                stopcid = enodeb * 256 + 15; 
+		} else {
 
 
                 startcid = enodeb * 256 + 21;
@@ -164,9 +167,10 @@
         
         <select id="carrier" class="form-control">
             <option value= "vf" >VF</option>
-            <option value= "timHUAWEI" >TIMHUAWEI</option>
-            <option value= "timHUAWEIB1" >TIMHUAWEIB1</option>
+            <option value= "timHUAWEI" >TIM HUAWEI</option>
+            <option value= "timHUAWEIB1" >TIM HUAWEI B1</option>
             <option value= "tim" >TIMNOKIA</option>
+	     <option value= "timers" >TIM ERICSSON</option>
             <option value= "h3g" >H3G ITALIA</option>
             <option value= "iliad" >ILIAD</option>
             <option value= "w3" >W3</option>
