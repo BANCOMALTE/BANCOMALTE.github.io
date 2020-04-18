@@ -55,6 +55,7 @@
             stopcid = $("#stopcid").val(),
             enodeb = $("#enodeb").val(),
             carrier = $("#carrier").val(),
+	     secid = $("#secid").val(),
             psc = 0,
             address = 1;
 
@@ -83,7 +84,10 @@
                 } else if(carrier == "timers") {
 			startcid = enodeb * 256 + 1;
                 stopcid = enodeb * 256 + 21; 
-		} else {
+		} else if(carrier == "libero") {
+                    startcid = stopcid = enodeb * 256 + Number(secid);
+               
+                } else {
 
 
                 startcid = enodeb * 256 + 21;
@@ -158,6 +162,7 @@
         <input type="number" class="form-control" id="stopcid" placeholder="Stop CID" required>
         <input type="number" class="form-control" id="enodeb" placeholder="Enodeb" required>
         <input type="text" class="form-control" id="token" placeholder="Token" required>
+	<input type="number" class="form-control" id="secid" placeholder="Sector" required>
         <select id="radio" class="form-control">
             <option value='"lte"'>LTE</option>
             <option value='"umts"'>UMTS</option>
@@ -174,6 +179,7 @@
             <option value= "h3g" >H3G ITALIA</option>
             <option value= "iliad" >ILIAD</option>
             <option value= "w3" >WINDTRE</option>
+	    <option value= "libero" >LIBERO</option>
             
           </select>
 
