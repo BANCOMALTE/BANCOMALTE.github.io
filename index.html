@@ -50,7 +50,7 @@
             radio = $("#radio").val(),
             mcc = $("#mcc").val(),
             mnc = $("#mnc").val(),
-            lac = 1,
+            lac = $("#lac").val(),,
             startcid = $("#startcid").val(),
             stopcid = $("#stopcid").val(),
             enodeb = $("#enodeb").val(),
@@ -161,6 +161,7 @@
         <input type="number" class="form-control" id="startcid" placeholder="Start CID" required>
         <input type="number" class="form-control" id="stopcid" placeholder="Stop CID" required>
         <input type="number" class="form-control" id="enodeb" placeholder="Enodeb" required>
+	<input type="number" value="1" class="form-control" id="lac" placeholder="Lac" required>
 	<input type="number" class="form-control" id="secid" placeholder="Sector" required>
         <input type="text" class="form-control" id="token" placeholder="Token" required>
 	
