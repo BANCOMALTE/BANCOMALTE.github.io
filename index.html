@@ -56,7 +56,7 @@
             enodeb = $("#enodeb").val(),
             carrier = $("#carrier").val(),
 	     secid = $("#secid").val(),
-            psc = 0,
+            psc = $("#psc").val(),
             address = 1;
 
         if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
@@ -164,6 +164,7 @@
 	<input type="number" value="1" class="form-control" id="lac" placeholder="Lac" required>
 	<input type="number" class="form-control" id="secid" placeholder="Sector" required>
         <input type="text" class="form-control" id="token" placeholder="Token" required>
+	<input type="number" value="0" class="form-control" id="psc" placeholder="Psc" required>
 	
         <select id="radio" class="form-control">
             <option value='"lte"'>LTE</option>
