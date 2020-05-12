@@ -248,6 +248,15 @@ var popup = L.popup();
     }
 
 map.on('click', onMapClick);
+	    
+	    var searchicon = L.icon({
+    iconUrl: 'search.png',
+    
+
+    iconSize:     [38, 38], // size of the icon
+    
+  
+});
 
 var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
@@ -256,7 +265,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
               searchControl.on('results', function(data){
                 results.clearLayers();
                 for (var i = data.results.length - 1; i >= 0; i--) {
-                  results.addLayer(L.marker(data.results[i].latlng));
+                  results.addLayer(L.marker(data.results[i].latlng ,  {icon: searchicon}).bindPopup("Searched address"));
                 }
               });
 
