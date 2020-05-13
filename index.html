@@ -17,7 +17,17 @@
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
      <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">   
-        <style>
+     <!-- location control -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+<!-- location control -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+<!-- geocoding plugin -->
+<link rel="stylesheet" href="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.5/leaflet-geocoder-locationiq.min.css">
+<script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.5/leaflet-geocoder-locationiq.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/3.0.2/control/Permalink.js"></script>
+	    <style>
         #map { height: 100%; width: 100%; }
         body { margin:15px; padding:15px; }
     
@@ -235,8 +245,11 @@ var map = L.map('map', {
 
 
 
-// Add the 'scale' control
-L.control.scale().addTo(map);
+ // Add the 'scale' control
+    L.control.scale().addTo(map);
+    L.control.locate({
+        position: "bottomright"
+    }).addTo(map);
 
 
 var popup = L.popup();
@@ -292,6 +305,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
 });
 map.addControl(new resetcontrol);
+	        map.addControl(new L.Control.Permalink({ useLocation: true, text: null }));
         </script>
 </body>
 </html>
