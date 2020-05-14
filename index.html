@@ -27,6 +27,9 @@
 <script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.5/leaflet-geocoder-locationiq.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/3.0.2/control/Permalink.js"></script>
+	     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.map">
 	    <style>
         #map { height: 100%; width: 100%; }
         body { margin:15px; padding:15px; }
@@ -310,6 +313,55 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 });
 map.addControl(new resetcontrol);
 	        map.addControl(new L.Control.Permalink({ useLocation: true, text: null }));
+	    var editableLayers = new L.FeatureGroup();
+    map.addLayer(editableLayers);
+    
+    
+    
+    var options = {
+        position: 'topright',
+        draw: {
+            polyline: {
+                shapeOptions: {
+                    color: '#f357a1',
+                    weight: 10
+                }
+            },
+            polygon: {
+                allowIntersection: false, // Restricts shapes to simple polygons
+                drawError: {
+                    color: '#e1e100', // Color the shape will turn when intersects
+                    message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+                },
+                shapeOptions: {
+                    color: '#bada55'
+                }
+            },
+            circle: false, // Turns off this drawing tool
+            rectangle: {
+                shapeOptions: {
+                    clickable: false
+                }
+            },
+            marker: false
+        },
+        edit: {
+            featureGroup: editableLayers, //REQUIRED!!
+            remove: true
+        }
+    };
+    
+    var drawControl = new L.Control.Draw(options);
+    map.addControl(drawControl);
+    
+    map.on(L.Draw.Event.CREATED, function (e) {
+        var type = e.layerType,
+            layer = e.layer;
+    
+      
+    
+        editableLayers.addLayer(layer);
+    });
         </script>
 </body>
 </html>
