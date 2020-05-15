@@ -327,7 +327,7 @@ var map = L.map('map', {
 // Add the 'layers' control
 L.control.layers({
         "Streets": streets,
-        "OMS": osm,
+        "OSM": osm,
     }, null, {
         position: "topright"
     }).addTo(map);
@@ -377,7 +377,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         container.onclick = function () {
           map.eachLayer(function (layer) {
-            if(!maps.includes(layer) && layer != osm && layer != editableLayers)
+            if(!maps.includes(layer) && layer != osm && layer != editableLayers && layer != results)
               map.removeLayer(layer);
           });
         };
