@@ -129,94 +129,94 @@
 			
 			 switch (carrier) {
       case 'w3':
-                 if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
+                 if (radio == 'lte' && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
                          band = "B3";
-                 } else if (sec == 6 || sec == 7 || sec == 8 || sec == 9) {
+                 } else if (radio == 'lte' && sec == 6 || sec == 7 || sec == 8 || sec == 9) {
                      band = "B20";
-                 } else if (sec == 12 || sec == 13 || sec == 14 || sec == 15) {
+                 } else if (radio == 'lte' && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
-                 } else if  (sec == 18 || sec == 19 || sec == 20 || sec == 21) {
+                 } else if  (radio == 'lte' && sec == 18 || sec == 19 || sec == 20 || sec == 21) {
                      band = "B1"; }
                  break;
       case 'vf':
-      if (sec == 31 || sec == 32 || sec == 33 || sec == 33) {
+      if (radio == 'lte' && sec == 31 || sec == 32 || sec == 33 || sec == 33) {
                          band = "B3";
-                 } else if (sec == 11 || sec == 12 || sec == 13 || sec == 14) {
+                 } else if (radio == 'lte' && sec == 11 || sec == 12 || sec == 13 || sec == 14) {
                      band = "B20";
-                 } else if (sec == 51 || sec == 52 || sec == 53 || sec == 54) {
+                 } else if (radio == 'lte' && sec == 51 || sec == 52 || sec == 53 || sec == 54) {
                      band = "B7";
-                 } else if  (sec == 41 || sec == 42 || sec == 43 || sec == 44) {
+                 } else if  (radio == 'lte' && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
                      band = "B1"; }
                  break;
                  case 'timHUAWEI':
-                 if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
+                 if (radio == 'lte' && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
                          band = "B3";
-                 } else if (sec == 6 || sec == 7 || sec == 8 || sec == 9) {
+                 } else if (radio == 'lte' && sec == 6 || sec == 7 || sec == 8 || sec == 9) {
                      band = "B20";
-                 } else if (sec == 12 || sec == 13 || sec == 14 || sec == 15) {
+                 } else if (radio == 'lte' && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
-                 } else if  (sec == 36 || sec == 37 || sec == 38 || sec == 39) {
+                 } else if  (radio == 'lte' && sec == 36 || sec == 37 || sec == 38 || sec == 39) {
                      band = "B1"; }
                  break;
                  case 'timHUAWEIB1':
-                 if (sec == 250 || sec == 251 || sec == 252 || sec == 253) {
+                 if (radio == 'lte' && sec == 250 || sec == 251 || sec == 252 || sec == 253) {
                          band = "B1";
                  } 
                  
                  break;
                  case 'h3g':
-                 if (sec == 1 || sec == 2 || sec == 3 ) {
+                 if (radio == 'lte' && sec == 1 || sec == 2 || sec == 3 ) {
                          band = "B3";
-                 } else if (sec == 4 || sec == 5 || sec == 6 ) {
+                 } else if (radio == 'lte' && sec == 4 || sec == 5 || sec == 6 ) {
                      band = "B7";
                  }
                  break;
                  case 'iliad':
-                 if (sec == 61 || sec == 62 || sec == 63) {
+                 if (radio == 'lte' && sec == 61 || sec == 62 || sec == 63) {
                          band = "B3";
                 
-                 } else if (sec == 81 || sec == 82 || sec == 83 ) {
+                 } else if (radio == 'lte' && sec == 81 || sec == 82 || sec == 83 ) {
                      band = "B7";
-                 } else if  (sec == 21 || sec == 22 || sec == 23 ) {
+                 } else if  (radio == 'lte' && sec == 21 || sec == 22 || sec == 23 ) {
                      band = "B1"; }
                  break;
                  case 'tim':
-                 if (sec == 41 || sec == 42 || sec == 43 || sec == 44) {
+                 if (radio == 'lte' && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
                          band = "B3";
-                 } else if (sec == 61 || sec == 62 || sec == 63 || sec == 64) {
+                 } else if (radio == 'lte' && sec == 61 || sec == 62 || sec == 63 || sec == 64) {
                      band = "B20";
-                 } else if (sec == 21 || sec == 22 || sec == 23 || sec == 23) {
+                 } else if (radio == 'lte' && sec == 21 || sec == 22 || sec == 23 || sec == 23) {
                      band = "B7";
-                 } else if  (sec == 31 || sec == 32 || sec == 33 || sec == 34) {
+                 } else if  (radio == 'lte' && sec == 31 || sec == 32 || sec == 33 || sec == 34) {
                      band = "B1"; }
                  break;
 		case 'libero':
-                 if (mnc == 88 && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
+                 if (radio == 'lte' && mnc == 88 && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
                          band = "B3";
-                 } else if (mnc == 88 && sec == 6 || sec == 7 || sec == 8 || sec == 9) {
+                 } else if (radio == 'lte' && mnc == 88 && sec == 6 || sec == 7 || sec == 8 || sec == 9) {
                      band = "B20";
-                 } else if (mnc == 88 && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
+                 } else if (radio == 'lte' && mnc == 88 && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
-                 } else if  (mnc == 88 && sec == 18 || sec == 19 || sec == 20 || sec == 21) {
+                 } else if  (radio == 'lte' && mnc == 88 && sec == 18 || sec == 19 || sec == 20 || sec == 21) {
                      band = "B1"; }
-                     else if (mnc == 10 && sec == 31 || sec == 32 || sec == 33 || sec == 33) {
+                     else if (radio == 'lte' && mnc == 10 && sec == 31 || sec == 32 || sec == 33 || sec == 33) {
                          band = "B3";
-                 } else if (mnc == 10 && sec == 11 || sec == 12 || sec == 13 || sec == 14) {
+                 } else if (radio == 'lte' && mnc == 10 && sec == 11 || sec == 12 || sec == 13 || sec == 14) {
                      band = "B20";
-                 } else if (mnc == 10 && sec == 51 || sec == 52 || sec == 53 || sec == 54) {
+                 } else if (radio == 'lte' && mnc == 10 && sec == 51 || sec == 52 || sec == 53 || sec == 54) {
                      band = "B7";
-                 } else if  (mnc == 10 && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
+                 } else if  (radio == 'lte' && mnc == 10 && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
                      band = "B1"; }
-                    else if (mnc == 99 && sec == 1 || sec == 2 || sec == 3 ) {
+                    else if (radio == 'lte' && mnc == 99 && sec == 1 || sec == 2 || sec == 3 ) {
                          band = "B3";
-                 } else if (mnc == 99 && sec == 4 || sec == 5 || sec == 6 ) {
+                 } else if (radio == 'lte' && mnc == 99 && sec == 4 || sec == 5 || sec == 6 ) {
                      band = "B7";
-                 } else if (mnc == 50 && sec == 61 || sec == 62 || sec == 63) {
+                 } else if (radio == 'lte' && mnc == 50 && sec == 61 || sec == 62 || sec == 63) {
                          band = "B3";
                 
-                 } else if (mnc == 50 && sec == 81 || sec == 82 || sec == 83 ) {
+                 } else if (radio == 'lte' && mnc == 50 && sec == 81 || sec == 82 || sec == 83 ) {
                      band = "B7";
-                 } else if  (mnc == 50 && sec == 21 || sec == 22 || sec == 23 ) {
+                 } else if  (radio == 'lte' && mnc == 50 && sec == 21 || sec == 22 || sec == 23 ) {
                      band = "B1"; }
                      break;
                 
