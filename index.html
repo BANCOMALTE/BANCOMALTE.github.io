@@ -343,6 +343,9 @@ var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
     attribution: 'Data © <a href="http://osm.org/copyright">OpenStreetMap</a>',
     maxZoom: 18
   });
+	    var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
 
 
 // Initialize the map
@@ -356,6 +359,7 @@ var map = L.map('map', {
 L.control.layers({
         "Streets": streets,
         "OSM": osm,
+	"SAT": satellite,
     }, null, {
         position: "topright"
     }).addTo(map);
@@ -405,7 +409,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         container.onclick = function () {
           map.eachLayer(function (layer) {
-            if(!maps.includes(layer) && layer != osm && layer != editableLayers && layer != results)
+            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results)
               map.removeLayer(layer);
           });
         };
