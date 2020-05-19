@@ -236,7 +236,7 @@
 			 band = ""; }
 			
 			
-                    if(APIresponse.status == "ok") {
+                    if(radio == '"lte"' && APIresponse.status == "ok") {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
@@ -258,6 +258,23 @@
                         
                         
                     }
+			 else  if((radio == '"umts"' || radio == '"gsm"') && APIresponse.status == "ok") {
+                         html = '<div class="card-group">';
+                       html = '<div class="card col-2">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
+                        html += "<b>CID:</b> " + cid + "<br />";
+                       
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br />").openPopup();
+                         marker.bindTooltip(cid, {permanent: true, direction: 'bottom'}).openTooltip();
+			 }
                     //altrimenti, messaggio di errore
                     else {
                          html = '<div class="card col-2">';
