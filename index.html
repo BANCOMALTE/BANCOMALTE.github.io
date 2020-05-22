@@ -71,10 +71,13 @@
 	     secid = $("#secid").val(),
             psc = $("#psc").val(),
 	    band = $("#band").val(),
+	     cidumts = $("#cidumts").val(),
+             rnc = $("#rnc").val(),
             address = 1;
 
         if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
-            if(enodeb != "" && enodeb > 0){
+            if(radio == '"lte"') {
+		if(enodeb != "" && enodeb > 0){
            if(carrier == "w3"){
                 startcid = enodeb * 256;
                 stopcid = enodeb * 256 + 21;
@@ -106,7 +109,9 @@
 
                 startcid = enodeb * 256 + 21;
                 stopcid = enodeb * 256 + 64;
-                 }}
+                 }}} else if (radio == '"umts"') {
+                     startcid = stopcid = rnc * 65536 + Number(cidumts);
+                 }
 
             $("#result").html("");
 
@@ -306,8 +311,10 @@
 	<input type="number" class="form-control" id="secid" placeholder="Sector" required>
         <input type="text" class="form-control" id="token" placeholder="Token" required>
 	<input type="number" value="0" class="form-control" id="psc" placeholder="Psc" required>
+	     <input type="number" class="form-control" id="cidumts" placeholder="CidUmts" required  >
+    <input type="number" class="form-control" id="rnc" placeholder="RNC" required>
 	
-        <select id="radio" class="form-control">
+        <select id="radio" class="form-control" onchange="miafunzione(this)">
             <option value='"lte"'>LTE</option>
             <option value='"umts"'>UMTS</option>
             <option value='"gsm"'>GSM</option>
@@ -352,7 +359,34 @@
     <div id="map"></div>
     
     <script>
+ document.getElementById("enodeb").disabled = false;
+    document.getElementById("secid").disabled = false;
+    document.getElementById("cidumts").disabled = true;
+    document.getElementById("rnc").disabled = true;
+   function miafunzione(selectObject) {
+  switch(selectObject.value) {
+   case '"lte"': 
+   document.getElementById("enodeb").disabled = false;
+    document.getElementById("secid").disabled = false;
+    document.getElementById("cidumts").disabled = true;
+    document.getElementById("rnc").disabled = true;
+  
+  break;
+ case '"umts"': 
+    document.getElementById("enodeb").disabled = true;
+    document.getElementById("secid").disabled = true;
+    document.getElementById("cidumts").disabled = false;
+    document.getElementById("rnc").disabled = false;
+ 
+ break;
+case '"gsm"':
+    document.getElementById("enodeb").disabled = true;
+    document.getElementById("secid").disabled = true;
+    document.getElementById("cidumts").disabled = true;
+    document.getElementById("rnc").disabled = true;
 
+    break; 
+  }}
 
 
 
