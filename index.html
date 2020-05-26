@@ -141,7 +141,7 @@
                  } else if (sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
                  } else if  (sec == 18 || sec == 19 || sec == 20 || sec == 21) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                  break;
       case 'vf':
       if (sec == 31 || sec == 32 || sec == 33 || sec == 33) {
@@ -151,7 +151,7 @@
                  } else if (sec == 51 || sec == 52 || sec == 53 || sec == 54) {
                      band = "B7";
                  } else if  (sec == 41 || sec == 42 || sec == 43 || sec == 44) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                  break;
                  case 'timHUAWEI':
                  if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
@@ -161,12 +161,12 @@
                  } else if (sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
                  } else if  (sec == 36 || sec == 37 || sec == 38 || sec == 39) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                  break;
                  case 'timHUAWEIB1':
                  if (sec == 250 || sec == 251 || sec == 252 || sec == 253) {
                          band = "B1";
-                 } 
+                 } else { band = "";}
                  
                  break;
                  case 'h3g':
@@ -174,7 +174,7 @@
                          band = "B3";
                  } else if (sec == 4 || sec == 5 || sec == 6 ) {
                      band = "B7";
-                 }
+                 } else { band = "";}
                  break;
                  case 'iliad':
                  if (sec == 61 || sec == 62 || sec == 63) {
@@ -183,7 +183,7 @@
                  } else if (sec == 81 || sec == 82 || sec == 83 ) {
                      band = "B7";
                  } else if  (sec == 21 || sec == 22 || sec == 23 ) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                  break;
                  case 'tim':
                  if (sec == 41 || sec == 42 || sec == 43 || sec == 44) {
@@ -193,7 +193,7 @@
                  } else if (sec == 21 || sec == 22 || sec == 23 || sec == 23) {
                      band = "B7";
                  } else if  (sec == 31 || sec == 32 || sec == 33 || sec == 34) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                  break;
 		case 'libero':
                  if (mnc == 88 && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
@@ -222,7 +222,7 @@
                  } else if (mnc == 50 && sec == 81 || sec == 82 || sec == 83 ) {
                      band = "B7";
                  } else if  (mnc == 50 && sec == 21 || sec == 22 || sec == 23 ) {
-                     band = "B1"; }
+                     band = "B1"; } else { band = "";}
                      break;
                 
                 
