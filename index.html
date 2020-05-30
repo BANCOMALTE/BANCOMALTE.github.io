@@ -361,9 +361,10 @@
     
     <script>
  document.getElementById("enodeb").disabled = false;
-    document.getElementById("secid").disabled = false;
+    document.getElementById("secid").disabled = true;
     document.getElementById("cidumts").disabled = true;
     document.getElementById("rnc").disabled = true;
+	  document.getElementById("psc").disabled = true;    
    function miafunzione(selectObject) {
   switch(selectObject.value) {
    case '"lte"': 
@@ -389,8 +390,7 @@ case '"gsm"':
     break; 
   }}
 
-document.getElementById("secid").disabled = true;
-  document.getElementById("psc").disabled = true;
+
 function miaf2(selectObject) {
   switch(selectObject.value) {
    case "libero": 
