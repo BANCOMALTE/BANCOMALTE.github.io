@@ -364,7 +364,8 @@
     document.getElementById("secid").disabled = true;
     document.getElementById("cidumts").disabled = true;
     document.getElementById("rnc").disabled = true;
-	  document.getElementById("psc").disabled = true;    
+	  document.getElementById("psc").disabled = true;   
+	      document.getElementById("carrier").disabled = false;
    function miafunzione(selectObject) {
   switch(selectObject.value) {
    case '"lte"': 
@@ -372,6 +373,7 @@
     document.getElementById("secid").disabled = false;
     document.getElementById("cidumts").disabled = true;
     document.getElementById("rnc").disabled = true;
+		  document.getElementById("carrier").disabled = false;
   
   break;
  case '"umts"': 
@@ -379,6 +381,8 @@
     document.getElementById("secid").disabled = true;
     document.getElementById("cidumts").disabled = false;
     document.getElementById("rnc").disabled = false;
+		   document.getElementById("carrier").disabled = true;
+    document.getElementById("psc").disabled = false;
  
  break;
 case '"gsm"':
@@ -386,6 +390,8 @@ case '"gsm"':
     document.getElementById("secid").disabled = true;
     document.getElementById("cidumts").disabled = true;
     document.getElementById("rnc").disabled = true;
+		   document.getElementById("carrier").disabled = true;
+    document.getElementById("psc").disabled = false;
 
     break; 
   }}
