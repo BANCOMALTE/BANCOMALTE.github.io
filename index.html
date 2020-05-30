@@ -322,7 +322,7 @@
             
           </select>
         
-        <select id="carrier" class="form-control">
+        <select id="carrier" class="form-control" onchange="miaf2(this)">
             <option value= "vf" >VODAFONE</option>
             <option value= "timHUAWEI" >TIM HUAWEI</option>
             <option value= "timHUAWEIB1" >TIM HUAWEI B1 SICILIA</option>
@@ -389,6 +389,55 @@ case '"gsm"':
     break; 
   }}
 
+document.getElementById("secid").disabled = true;
+  document.getElementById("psc").disabled = true;
+function miaf2(selectObject) {
+  switch(selectObject.value) {
+   case "libero": 
+ 
+    document.getElementById("secid").disabled = false;
+    document.getElementById("psc").disabled = false;
+ 
+
+    break; 
+    case "vf":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case "timHUAWEI":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break ;
+    case "timHUAWEIB1":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case "tim":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case "timers":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case "h3g":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case "iliad":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    case  "w3":
+    document.getElementById("secid").disabled = true;
+    document.getElementById("psc").disabled = true;
+    break;
+    
+ 
+ 
+ 
+ 
+  }}
 
 
 
