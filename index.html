@@ -485,7 +485,7 @@
                         html += "</div>";
 
                         $("#result").append(html);
-                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec + " " + band.fontcolor(colorebande) , {permanent: true, direction: 'bottom'}).openTooltip();
                         
