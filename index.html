@@ -509,8 +509,25 @@
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
 			
-			
-                    if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers") {
+			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1) {
+                        html = '<div class="card-group">';
+                       html = '<div class="card col-2">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
+                        html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
+                         marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
+                    } else
+                    if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "libero" && mnc != 1) {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
