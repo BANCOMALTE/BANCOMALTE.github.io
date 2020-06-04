@@ -532,7 +532,7 @@ var defaultmarkericon = L.icon({
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
                     } else
-                    if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "libero" && mnc != 1) {
+                    if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "libero" ) {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
