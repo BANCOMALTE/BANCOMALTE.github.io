@@ -42,7 +42,12 @@
         
         
     <script>
-
+var defaultmarkericon = L.icon({
+    iconUrl: 'default.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+})
     /* 
 
             Tramite queste variabili è possibile personalizzare i parametri della query che verrà effettuata
@@ -523,7 +528,7 @@
                         html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
                         html += "</div>";
                         $("#result").append(html);
-                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
                     } else
@@ -562,7 +567,7 @@
                         html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
                         html += "</div>";
                         $("#result").append(html);
-                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
                     }
@@ -579,7 +584,7 @@
                         html += "</div>";
 
                         $("#result").append(html);
-                        var marker = L.marker([ APIresponse.lat, APIresponse.lon]).addTo(map);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br />").openPopup();
                          marker.bindTooltip("<span>" + cid + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
 			 }
