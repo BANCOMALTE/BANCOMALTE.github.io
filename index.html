@@ -133,7 +133,7 @@
                     enodeb_c = parseInt(cid/256);
                     sec = cid - (enodeb_c * 256);
 
-			if(radio == '"lte"'){
+			if(radio == '"lte"' && carrier != "timers"){
 			 switch (carrier) {
 					 case 'w3':
                  if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
@@ -504,7 +504,7 @@
                 
                 
                 
-                 }}
+                 }} else if ( carrier == "timers" && radio == '"lte"') {band = ""; }
 			else if (radio == '"umts"')
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
