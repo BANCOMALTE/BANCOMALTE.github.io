@@ -138,7 +138,7 @@ var defaultmarkericon = L.icon({
                     enodeb_c = parseInt(cid/256);
                     sec = cid - (enodeb_c * 256);
 
-			if(radio == '"lte"' && carrier != "timers"){
+			if(radio == '"lte"'){
 			 switch (carrier) {
 					 case 'w3':
                  if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
@@ -380,7 +380,7 @@ var defaultmarkericon = L.icon({
 });}
                  break;
 		case 'libero':
-                 if (mnc == 88 && mnc != 1 && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
+                 if (mnc == 88 && sec == 0 || sec == 1 || sec == 2 || sec == 3) {
                          band = "B3";
 			  colorebande = "green";
                          iconemarker = L.icon({
@@ -389,7 +389,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 88 && mnc != 1 && sec == 6 || sec == 7 || sec == 8 || sec == 9) {
+                 } else if (mnc == 88 &&  sec == 6 || sec == 7 || sec == 8 || sec == 9) {
                      band = "B20";
 			  colorebande = "blue";
                      iconemarker = L.icon({
@@ -398,7 +398,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 88 && mnc != 1 && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
+                 } else if (mnc == 88 && sec == 12 || sec == 13 || sec == 14 || sec == 15) {
                      band = "B7";
 			 colorebande = "magenta";
                      iconemarker = L.icon({
@@ -407,14 +407,14 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if  (mnc == 88 && mnc != 1 && sec == 18 || sec == 19 || sec == 20 || sec == 21) {
+                 } else if  (mnc == 88  && sec == 18 || sec == 19 || sec == 20 || sec == 21) {
                      band = "B1";  colorebande = "orange"; iconemarker = L.icon({
     iconUrl: 'b1.png',
    iconSize:     [26, 42], // size of the icon
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });}
-                     else if (mnc == 10 && mnc != 1 && sec == 31 || sec == 32 || sec == 33 || sec == 33) {
+                     else if (mnc == 10 && sec == 31 || sec == 32 || sec == 33 || sec == 33) {
                          band = "B3";
 			      colorebande = "green";
                          iconemarker = L.icon({
@@ -423,7 +423,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 10 && mnc != 1 && sec == 11 || sec == 12 || sec == 13 || sec == 14) {
+                 } else if (mnc == 10  && sec == 11 || sec == 12 || sec == 13 || sec == 14) {
                      band = "B20";
 			  colorebande = "blue";
                      iconemarker = L.icon({
@@ -432,7 +432,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 10 && mnc != 1 && sec == 51 || sec == 52 || sec == 53 || sec == 54) {
+                 } else if (mnc == 10 && sec == 51 || sec == 52 || sec == 53 || sec == 54) {
                      band = "B7";
 			 colorebande = "magenta";
                      iconemarker = L.icon({
@@ -441,14 +441,14 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if  (mnc == 10 && mnc != 1 && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
+                 } else if  (mnc == 10  && sec == 41 || sec == 42 || sec == 43 || sec == 44) {
                      band = "B1";  colorebande = "orange"; iconemarker = L.icon({
     iconUrl: 'b1.png',
    iconSize:     [26, 42], // size of the icon
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 }); }
-                    else if (mnc == 99 && mnc != 1 && sec == 1 || sec == 2 || sec == 3 ) {
+                    else if (mnc == 99 && sec == 1 || sec == 2 || sec == 3 ) {
                          band = "B3";
 			     colorebande = "green";
                          iconemarker = L.icon({
@@ -457,7 +457,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 99 && mnc != 1 && sec == 4 || sec == 5 || sec == 6 ) {
+                 } else if (mnc == 99  && sec == 4 || sec == 5 || sec == 6 ) {
                      band = "B7";
 			 colorebande = "magenta";
                      iconemarker = L.icon({
@@ -466,7 +466,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if (mnc == 50 && mnc != 1 && sec == 61 || sec == 62 || sec == 63) {
+                 } else if (mnc == 50 && sec == 61 || sec == 62 || sec == 63) {
                          band = "B3";
 			  colorebande = "green";
                          iconemarker = L.icon({
@@ -476,7 +476,7 @@ var defaultmarkericon = L.icon({
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
                 
-                 } else if (mnc == 50 && mnc != 1 && sec == 81 || sec == 82 || sec == 83 ) {
+                 } else if (mnc == 50 && sec == 81 || sec == 82 || sec == 83 ) {
                      band = "B7";
 			 colorebande = "magenta";
                      iconemarker = L.icon({
@@ -485,7 +485,7 @@ var defaultmarkericon = L.icon({
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });
-                 } else if  (mnc == 50 && mnc != 1 && sec == 21 || sec == 22 || sec == 23 ) {
+                 } else if  (mnc == 50 && sec == 21 || sec == 22 || sec == 23 ) {
                      band = "B1";  colorebande = "orange"; iconemarker = L.icon({
     iconUrl: 'b1.png',
    iconSize:     [26, 42], // size of the icon
@@ -509,7 +509,7 @@ var defaultmarkericon = L.icon({
                 
                 
                 
-                 }} else if ( carrier == "timers" && radio == '"lte"') {band = ""; }
+                 }} 
 			else if (radio == '"umts"')
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
