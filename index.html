@@ -82,7 +82,9 @@ var defaultmarkericon = L.icon({
         iconemarker = $("#iconemarker").val(),
             address = 1;
 
-        if(stopcid >= startcid || (enodeb != "" && enodeb > 0)){
+        if(stopcid >= startcid ){
+		switch (radio){
+            case '"lte"':
             if(radio == '"lte"') {
 		if(enodeb != "" && enodeb > 0){
            if(carrier == "w3"){
@@ -116,8 +118,12 @@ var defaultmarkericon = L.icon({
 
                 startcid = enodeb * 256 + 21;
                 stopcid = enodeb * 256 + 64;
-                 }}} else if (radio == '"umts"') {
-                     startcid = stopcid = rnc * 65536 + Number(cidumts);
+                 }}
+		    break;
+		    case '"umts"': 
+                 if (rnc != "" && cidumts != ""  ) {startcid = stopcid = rnc * 65536 + Number(cidumts); }
+                 break;
+                 
                  }
 
             $("#result").html("");
