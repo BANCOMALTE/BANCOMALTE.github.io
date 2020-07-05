@@ -528,13 +528,12 @@ var defaultmarkericon = L.icon({
 			 band = ""; }
 			
 			
-	    if(APIresponse.status == "ok")
+		    if(APIresponse.status == "ok")
 	    {
 		    arraylat[i] = APIresponse.lat;
 		    arraylon[i] = APIresponse.lon;
          i++;
 	    }
-
 			
 			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1) {
                         html = '<div class="card-group">';
