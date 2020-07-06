@@ -633,7 +633,7 @@ var defaultmarkericon = L.icon({
 
             medialon = medialon/arraylon.length;
             medialat = medialat/arraylat.length;
-            if(radio == '"lte"' && carrier != "libero" ) {
+            if(radio == '"lte"' ) {
                 var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
                 marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c).openPopup();
                 marker.bindTooltip( "<span>" + enodeb_c + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
