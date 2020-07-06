@@ -128,7 +128,9 @@ var defaultmarkericon = L.icon({
                  }
 
             $("#result").html("");
-
+		 var i = 0;
+            var arraylon = [];
+            var arraylat = [];
             for(var cid = startcid; cid <= stopcid; cid++) {
                 var request = {
                     "async": false,
@@ -520,6 +522,12 @@ var defaultmarkericon = L.icon({
 			else if (radio == '"umts"')
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
+			if(APIresponse.status == "ok")
+	    {
+		    arraylat[i] = APIresponse.lat;
+		    arraylon[i] = APIresponse.lon;
+         i++;
+	    }
 			
 			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1) {
                         html = '<div class="card-group">';
@@ -607,7 +615,23 @@ var defaultmarkericon = L.icon({
                         $("#result").append(html);
                     }
                 });
+             }
+            var medialon = 0;
+            var medialat = 0;
+
+            for(var i =0; i<arraylon.length; i++)
+            {
+                medialon += arraylon[i];
+                medialat += arraylat[i];
             }
+
+            medialon = medialon/arraylon.length;
+            medialat = medialat/arraylat.length;
+            if(radio == '"lte"') {
+                var marker = L.marker([medialat, medialon], {icon: defaultmarkericon}).addTo(map);
+                marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c).openPopup();
+                marker.bindTooltip("enb: " + enodeb_c, {permanent: true, direction: 'bottom'}).openTooltip();
+             }
         }else {
             alert("Start CID must be <= than stop CID");
         }
