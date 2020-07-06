@@ -630,7 +630,7 @@ var defaultmarkericon = L.icon({
             if(radio == '"lte"') {
                 var marker = L.marker([medialat, medialon], {icon: defaultmarkericon}).addTo(map);
                 marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c).openPopup();
-                marker.bindTooltip("enb: " + enodeb_c, {permanent: true, direction: 'bottom'}).openTooltip();
+                marker.bindTooltip( enodeb_c, {permanent: true, direction: 'bottom'}).openTooltip();
              }
         }else {
             alert("Start CID must be <= than stop CID");
