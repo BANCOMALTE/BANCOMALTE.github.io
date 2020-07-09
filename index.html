@@ -718,6 +718,7 @@ var defaultmarkericon = L.icon({
     document.getElementById("rnc").disabled = true;
 	  document.getElementById("psc").disabled = true;   
 	      document.getElementById("carrier").disabled = false;
+	    document.getElementById("triangolazione").disabled = false;
    function miafunzione(selectObject) {
   switch(selectObject.value) {
    case '"lte"': 
@@ -755,40 +756,49 @@ function miaf2(selectObject) {
  
     document.getElementById("secid").disabled = false;
     document.getElementById("psc").disabled = false;
+		  document.getElementById("triangolazione").disabled = true;
  
 
     break; 
     case "vf":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case "timHUAWEI":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break ;
     case "timHUAWEIB1":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case "tim":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case "timers":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case "h3g":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case "iliad":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     case  "w3":
     document.getElementById("secid").disabled = true;
     document.getElementById("psc").disabled = true;
+		   document.getElementById("triangolazione").disabled = false;
     break;
     
  
