@@ -666,14 +666,16 @@ var defaultmarkericon = L.icon({
     <input type="number" class="form-control" id="rnc" placeholder="RNC" required>
 	
         <select id="radio" class="form-control" onchange="miafunzione(this)">
-            <option value='"lte"'>LTE</option>
+             <option selected disabled>RADIO</option>
+	    <option value='"lte"'>LTE</option>
             <option value='"umts"'>UMTS</option>
             <option value='"gsm"'>GSM</option>
             
           </select>
         
         <select id="carrier" class="form-control" onchange="miaf2(this)">
-            <option value= "vf" >VODAFONE</option>
+             <option selected disabled>CARRIER</option>
+		<option value= "vf" >VODAFONE</option>
             <option value= "timHUAWEI" >TIM HUAWEI</option>
             <option value= "timHUAWEIB1" >TIM HUAWEI B1 SICILIA</option>
             <option value= "tim" >TIM NOKIA</option>
@@ -686,7 +688,8 @@ var defaultmarkericon = L.icon({
           </select>
 	
 	  <select id="triangolazione" class="form-control" >
-            <option value="si">SI</option>
+          <option selected disabled>TRIANGULATION</option>
+		  <option value="si">SI</option>
             <option value="no">NO</option>
             
           </select>
