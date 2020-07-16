@@ -120,7 +120,10 @@ var defaultmarkericon = L.icon({
 		} else if(carrier == "libero") {
                     startcid = stopcid = enodeb * 256 + Number(secid);
                
-                } else {
+                } else if(carrier == "sctim") {
+			startcid = enodeb * 256 + 1;
+                stopcid = enodeb * 256 + 255;
+		} else {
 
 
                 startcid = enodeb * 256 + 21;
@@ -575,7 +578,7 @@ var defaultmarkericon = L.icon({
                         
                         
                         
-                    }  else if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "timers") {
+                    }  else if (radio == '"lte"' && APIresponse.status == "ok" && (carrier == "timers" || carrier == "sctim") {
                         html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
@@ -680,6 +683,7 @@ var defaultmarkericon = L.icon({
             <option value= "timHUAWEIB1" >TIM HUAWEI B1 SICILIA</option>
             <option value= "tim" >TIM NOKIA</option>
 	     <option value= "timers" >TIM ERICSSON</option>
+		<option value= "sctim" >SC TIM</option>
             <option value= "h3g" >H3G ITALIA</option>
             <option value= "iliad" >ILIAD</option>
             <option value= "w3" >WINDTRE</option>
