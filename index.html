@@ -543,7 +543,10 @@ var defaultmarkericon = L.icon({
                         html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
-                        html += "<b>CID:</b> " + cid + "<br />";
+                        html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button>CELLTRACKER</button></a>  <br />";
+				 html += "<b>CID:</b> " + cid + "<br />";
                         html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
                         html += "<b>SECTOR:</b> " + sec + "<br />";
 
@@ -561,7 +564,10 @@ var defaultmarkericon = L.icon({
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
-                        html += "<b>CID:</b> " + cid + "<br />";
+                         html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button>CELLTRACKER</button></a>  <br />";
+			    html += "<b>CID:</b> " + cid + "<br />";
                         html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
                         html += "<b>SECTOR:</b> " + sec + "<br />";
 			    html += "<b>BAND:</b> " + band.fontcolor(colorebande) + "<br />";
@@ -582,7 +588,10 @@ var defaultmarkericon = L.icon({
                         html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
-                        html += "<b>CID:</b> " + cid + "<br />";
+                        html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button>CELLTRACKER</button></a>  <br />";
+			    html += "<b>CID:</b> " + cid + "<br />";
                         html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
                         html += "<b>SECTOR:</b> " + sec + "<br />";
 
@@ -600,7 +609,8 @@ var defaultmarkericon = L.icon({
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button>MAPS</button></a>  <br />";
-                        html += "<b>CID:</b> " + cid + "<br />";
+                           html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button>LTE ITALY MAP</button></a>  <br />";
+				 html += "<b>CID:</b> " + cid + "<br />";
                        
                         html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
                          html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
