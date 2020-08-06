@@ -681,7 +681,7 @@ var defaultmarkericon = L.icon({
 
 $("#result").append(html);
                    var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
-                marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c).openPopup();
+                marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c + "<br />SECTORS:</b> " + arraysec + "<br /><b>BAND:</b> " + uniquearrayband + "<br />").openPopup();
                 marker.bindTooltip( "<span>" + enodeb_c + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
              } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') ) {
                     html = '<div class="card-group">';
