@@ -547,7 +547,7 @@ var defaultmarkericon = L.icon({
 	    {
 		    arraylat[i] = APIresponse.lat;
 		    arraylon[i] = APIresponse.lon;
-		    arrayband[i] = band;
+		    arrayband[i] = band.fontcolor(colorebande);
 		     arraysec[i] = sec;
 		      uniquearrayband = Array.from(new Set(arrayband))
          i++;
@@ -671,7 +671,7 @@ var defaultmarkericon = L.icon({
                         html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+medialat+"/"+medialon+"' target='_blank'><button>LTE ITALY MAP</button></a>  <br />";
                         html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button>CELLTRACKER</button></a>  <br />";
                     html += "<b>CID:</b> " + cid + "<br />";
-		    html += "<b>BANDS:</b> " + uniquearrayband + "<br />";
+		    html += "<b>BANDS:</b> "  + "<span>" + uniquearrayband + "</span>" + "<br />";
 		    html += "<b>SECTORS:</b> " + arraysec + "<br />";
                         html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
                         html += "<b>LAT:</b> " + medialat + "<br />";
