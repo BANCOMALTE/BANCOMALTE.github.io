@@ -954,7 +954,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         container.onclick = function () {
           map.eachLayer(function (layer) {
-            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results)
+            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results && layer == gpsbest)
               map.removeLayer(layer);
           });
         };
@@ -963,7 +963,8 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
 });
 map.addControl(new resetcontrol);
-	        map.addControl(new L.Control.Permalink({ useLocation: true, text: null }));
+	    var gpsbest = new L.Control.Permalink({ useLocation: true, text: null })
+	        map.addControl(gpsbest);
 	    var editableLayers = new L.FeatureGroup();
     map.addLayer(editableLayers);
     
