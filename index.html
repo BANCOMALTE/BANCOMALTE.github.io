@@ -954,7 +954,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         container.onclick = function () {
           map.eachLayer(function (layer) {
-            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results && layer == gpsbest)
+            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results )
               map.removeLayer(layer);
           });
         };
