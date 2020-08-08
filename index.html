@@ -910,11 +910,12 @@ L.control.layers({
     }).addTo(map);
 
  
-
+ var gpslayer = new L.LayerGroup().addTo(map);
  // Add the 'scale' control
     L.control.scale().addTo(map);
     L.control.locate({
-        position: "bottomright"
+        position: "bottomright",
+	     layer: gpslayer,
     }).addTo(map);
 
 
@@ -954,7 +955,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
         container.onclick = function () {
           map.eachLayer(function (layer) {
-            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results )
+            if(!maps.includes(layer) && layer != osm && layer != satellite && layer != editableLayers && layer != results && layer != gpslayer )
               map.removeLayer(layer);
           });
         };
