@@ -876,7 +876,11 @@ function miaf2(selectObject) {
  
  
   }}
-
+let btn = document.createElement('button');
+btn.innerText = 'Delete Marker';
+btn.onclick =  function() {
+  map.removeLayer(results);
+}
 
 
                     // API token goes here
@@ -938,7 +942,9 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
               searchControl.on('results', function(data){
                 results.clearLayers();
                 for (var i = data.results.length - 1; i >= 0; i--) {
-                  results.addLayer(L.marker(data.results[i].latlng ,  {icon: searchicon}).bindPopup("Searched address"));
+                  results.addLayer(L.marker(data.results[i].latlng ,  {icon: searchicon}).bindPopup(btn, {
+  maxWidth: 'auto'
+}));
                 }
               });
 
