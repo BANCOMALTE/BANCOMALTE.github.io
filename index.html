@@ -944,7 +944,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
                 for (var i = data.results.length - 1; i >= 0; i--) {
                   results.addLayer(L.marker(data.results[i].latlng ,  {icon: searchicon}).bindPopup(btn, {
   maxWidth: 'auto'
-}));
+})),map.addLayer(results);
                 }
               });
 
