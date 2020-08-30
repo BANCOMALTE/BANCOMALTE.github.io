@@ -738,7 +738,15 @@ $("#result").append(html);
     <div class="form-row">
    
         <input type="number"  value="222" class="form-control" id="mcc" placeholder="MCC" required>
-        <input type="number" class="form-control" id="mnc" placeholder="MNC" required>
+        
+	    <input type="number" class="form-control" list="MNCs" name="MNC" id="mnc">
+    <datalist id="MNCs">
+        <option value="10">VODAFONE</option>
+        <option value="1">TIM</option>
+        <option value="99">H3G</option>
+        <option value="99">ILIAD</option>
+        <option value="88">WINDTRE</option>
+    </datalist>
         <input type="number" class="form-control" id="startcid" placeholder="Start CID" required>
         <input type="number" class="form-control" id="stopcid" placeholder="Stop CID" required>
         <input type="number" class="form-control" id="enodeb" placeholder="Enodeb" required>
