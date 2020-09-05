@@ -566,7 +566,7 @@ var defaultmarkericon = L.icon({
 			else if (radio == '"umts"')
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
-			if(APIresponse.status == "ok")
+			if(APIresponse.status == "ok" && colorebande != undefined)
 	    {
 		    arraylat[i] = APIresponse.lat;
 		    arraylon[i] = APIresponse.lon;
@@ -574,7 +574,14 @@ var defaultmarkericon = L.icon({
 		     arraysec[i] = sec;
 		      uniquearrayband = Array.from(new Set(arrayband))
          i++;
-	    }
+	    } else if(APIresponse.status == "ok" && colorebande == undefined) {
+            arraylat[i] = APIresponse.lat;
+		    arraylon[i] = APIresponse.lon;
+		   
+		     arraysec[i] = sec;
+		      uniquearrayband = Array.from(new Set(arrayband))
+         i++;
+        }
 			
 			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1) {
                         html = '<div class="card-group">';
