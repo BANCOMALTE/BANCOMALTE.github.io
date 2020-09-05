@@ -662,7 +662,7 @@ var defaultmarkericon = L.icon({
 			 }
                     //altrimenti, messaggio di errore
                     else {
-			    if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++}
+			    if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++; cid--;}
 
                          html = '<div class="card col-2">';
                         html += "<b>CID:</b> " + cid + "<br />";
