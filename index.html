@@ -109,7 +109,7 @@ var defaultmarkericon = L.icon({
               
                 }else if (carrier == "vf") {
                 startcid = enodeb * 256 + 11;
-                stopcid = enodeb * 256 + 54;
+                stopcid = enodeb * 256 + 94;
                  } else if(carrier == "timHUAWEI") { startcid = enodeb * 256;
                     stopcid = enodeb * 256 + 39;
                 
@@ -258,6 +258,12 @@ var defaultmarkericon = L.icon({
    iconSize:     [26, 42], // size of the icon
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+}); } else if  (sec == 91 || sec == 92 || sec == 93 || sec == 94) {
+                     band = "B8";  colorebande = "brown"; iconemarker = L.icon({
+    iconUrl: 'B8.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 }); } else { band = "";  iconemarker = L.icon({
     iconUrl: 'default.png',
    iconSize:     [26, 42], // size of the icon
@@ -266,7 +272,7 @@ var defaultmarkericon = L.icon({
 });}
                  break;
                  case 'timHUAWEI':
-                 if (sec == 0 || sec == 1 || sec == 2 || sec == 3) {
+                 if (sec == 0 || sec == 1 || sec == 2 || sec == 3 || sec == 31 || sec == 32 || sec == 33 || sec == 34 || sec == 35) {
                          band = "B3";
 			  colorebande = "green";
                          iconemarker = L.icon({
@@ -780,7 +786,7 @@ $("#result").append(html);
 		<option value= "vf" >VODAFONE</option>
             <option value= "timHUAWEI" >TIM HUAWEI</option>
             <option value= "timHUAWEIB1" >TIM HUAWEI B1 SICILIA</option>
-            <option value= "tim" >TIM NOKIA</option>
+            <option value= "tim" >TIM NOKIA E E///</option>
 	     <option value= "timers" >TIM ERICSSON</option>
 		<option value= "sctim" >SC TIM</option>
             <option value= "h3g" >H3G ITALIA</option>
