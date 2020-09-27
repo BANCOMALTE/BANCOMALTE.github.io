@@ -111,7 +111,7 @@ var defaultmarkericon = L.icon({
                 startcid = enodeb * 256 + 11;
                 stopcid = enodeb * 256 + 94;
                  } else if(carrier == "timHUAWEI") { startcid = enodeb * 256;
-                    stopcid = enodeb * 256 + 39;
+                    stopcid = enodeb * 256 + 57;
                 
                  } else if(carrier == "timHUAWEIB1"){
                      startcid = enodeb * 256 + 250;
@@ -302,6 +302,12 @@ var defaultmarkericon = L.icon({
                  } else if  (sec == 36 || sec == 37 || sec == 38 || sec == 39) {
                      band = "B1";  colorebande = "orange"; iconemarker = L.icon({
     iconUrl: 'b1.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+}); } else if  (sec == 55 || sec == 56 || sec == 57 || sec == 58) {
+                     band = "B8";  colorebande = "brown"; iconemarker = L.icon({
+    iconUrl: 'B8.png',
    iconSize:     [26, 42], // size of the icon
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
