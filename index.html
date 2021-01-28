@@ -174,6 +174,7 @@ var defaultmarkericon = L.icon({
 		var arrayband = [];
             var uniquearrayband= [];
 		var arraysec = [];
+		var arraycid = [];
             for(var cid = startcid; cid <= stopcid; cid++) {
                 var request = {
                     "async": false,
@@ -603,6 +604,7 @@ var defaultmarkericon = L.icon({
 	    {
 		    arraylat[i] = APIresponse.lat;
 		    arraylon[i] = APIresponse.lon;
+		    arraycid[i] = cid;
 		    arrayband[i] = band.fontcolor(colorebande);
 		     arraysec[i] = sec;
 		      uniquearrayband = Array.from(new Set(arrayband))
@@ -610,6 +612,7 @@ var defaultmarkericon = L.icon({
 	    } else if(APIresponse.status == "ok" && colorebande == undefined) {
             arraylat[i] = APIresponse.lat;
 		    arraylon[i] = APIresponse.lon;
+		    arraycid[i] = cid;
 		   
 		     arraysec[i] = sec;
 		      uniquearrayband = Array.from(new Set(arrayband))
@@ -638,7 +641,7 @@ var defaultmarkericon = L.icon({
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
                                       const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',arraycid]
   
 
 ];
@@ -684,7 +687,7 @@ document.body.appendChild(link);
                          marker.bindTooltip(enodeb_c + ":" + sec + " " + band.fontcolor(colorebande) , {permanent: true, direction: 'bottom'}).openTooltip();
                                              const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',arraycid]
   
 
 ];
@@ -731,7 +734,7 @@ document.body.appendChild(link);
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
                                        const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',arraycid]
   
 
 ];
@@ -774,7 +777,7 @@ document.body.appendChild(link);
 			
 			                      const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['Cell ID',cid]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['Cell ID',arraycid]
   
 
 ];
@@ -848,7 +851,7 @@ $("#result").append(html);
                 marker.bindTooltip( "<span>" + enodeb_c + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
                             const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon],['Cell ID',arraycid]
   
 
 ];
@@ -892,7 +895,7 @@ $("#result").append(html);
                 marker.bindTooltip( "BTS", {permanent: true, direction: 'bottom'}).openTooltip();
                               const rows = [
 		
-  ['Latitudine',arraylat],['Longitudine',arraylon],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon]
+  ['Latitudine',arraylat],['Longitudine',arraylon],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon],['Cell ID',arraycid]
 
 ];
                        let csvContent = "data:text/csv;charset=utf-8,";
