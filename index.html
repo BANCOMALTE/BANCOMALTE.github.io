@@ -636,7 +636,31 @@ var defaultmarkericon = L.icon({
                         var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
-                    } else
+                                      const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }   } else
                     if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "sctim" ) {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
@@ -658,7 +682,31 @@ var defaultmarkericon = L.icon({
                         var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec + " " + band.fontcolor(colorebande) , {permanent: true, direction: 'bottom'}).openTooltip();
-                        
+                                             const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }
                         
                         
                     }  else if (radio == '"lte"' && APIresponse.status == "ok" && (carrier == "timers" || carrier == "sctim")) {
@@ -681,7 +729,31 @@ var defaultmarkericon = L.icon({
                         var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
                          marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
-                    }
+                                       const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Cell ID',cid]
+  
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }  }
 			 else  if((radio == '"umts"' || radio == '"gsm"') && APIresponse.status == "ok") {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2">';
@@ -699,7 +771,32 @@ var defaultmarkericon = L.icon({
                         var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br />").openPopup();
                          marker.bindTooltip("<span>" + cid + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
-			 }
+			
+			                      const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['Cell ID',cid]
+  
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }}
                     //altrimenti, messaggio di errore
                     else {
 			    if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++; cid--;}
@@ -749,7 +846,31 @@ $("#result").append(html);
                    var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
                 marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTORS:</b> " + arraysec + "<br /><b>BANDS:</b> " + uniquearrayband + "<br />").openPopup();
                 marker.bindTooltip( "<span>" + enodeb_c + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
-             } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') ) {
+                            const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['eNb',enodeb_c],['Settori',arraysec],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon]
+  
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }      } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') ) {
                     html = '<div class="card-group">';
                        html = '<div class="card col-2">';
                         html += "<b>TRIANGOLAZIONE</b>";
@@ -769,7 +890,30 @@ $("#result").append(html);
 		     var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
                 marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br />" ).openPopup();
                 marker.bindTooltip( "BTS", {permanent: true, direction: 'bottom'}).openTooltip();
-             }
+                              const rows = [
+		
+  ['Latitudine',arraylat],['Longitudine',arraylon],['Latitudine triangolazione',medialat],['Longitudine triangolazione',medialon]
+
+];
+                       let csvContent = "data:text/csv;charset=utf-8,";
+
+rows.forEach(function(rowArray) {
+    let row = rowArray.join(";");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "risultati.csv");
+document.body.appendChild(link); 
+
+
+	
+	var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+	if (r==true)
+	  {
+      link.click()
+	  }    }
         }else {
             alert("Start CID must be <= than stop CID");
         }
