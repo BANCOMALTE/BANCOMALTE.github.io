@@ -236,9 +236,9 @@ var defaultmarkericon = L.icon({
         coordinatesinistra = $("#coordinatesinistra").val(),
         verificafake = $("#verificafake").val(),
             address = 1;
-	    /*
+	    
 	const [latdestraalto, londestraalto] = coordinatedestra.split(',');
-        const [latsinistrabasso, lonsinistrabasso] = coordinatesinistra.split(','); */
+        const [latsinistrabasso, lonsinistrabasso] = coordinatesinistra.split(','); 
        
 	    if(stopcid >= startcid){
 		switch (radio){
@@ -722,6 +722,7 @@ var defaultmarkericon = L.icon({
 			else if (radio == '"umts"')
 		 {band = ""; } else if (radio == '"gsm"') {
 			 band = ""; }
+       if(verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto )  )) {
 			if(APIresponse.status == "ok" && colorebande != undefined)
 	    {
 		    arraylat[i] = APIresponse.lat;
@@ -741,9 +742,31 @@ var defaultmarkericon = L.icon({
 		     arraysec[i] = sec;
 		      uniquearrayband = Array.from(new Set(arrayband))
          i++;
+        }} else if( verificafake != "Si") {
+          if(APIresponse.status == "ok" && colorebande != undefined)
+	    {
+		    arraylat[i] = APIresponse.lat;
+		    arraylon[i] = APIresponse.lon;
+		    arraycid[i] = cid;
+		     arrayenb[i] = enodeb_c;
+		    arrayband[i] = band.fontcolor(colorebande);
+		     arraysec[i] = sec;
+		      uniquearrayband = Array.from(new Set(arrayband))
+         i++;
+	    } else if(APIresponse.status == "ok" && colorebande == undefined) {
+            arraylat[i] = APIresponse.lat;
+		    arraylon[i] = APIresponse.lon;
+		    arraycid[i] = cid;
+		     arrayenb[i] = enodeb_c;
+		   
+		     arraysec[i] = sec;
+		      uniquearrayband = Array.from(new Set(arrayband))
+         i++;
+        }
         }
 			
-			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1) {
+			 if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1 && verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto ))) 
+       {
                         html = '<div class="card-group">';
                        html = '<div class="card col-2" style="padding-top:10px;">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
@@ -802,8 +825,69 @@ var defaultmarkericon = L.icon({
       var r = confirm("Vuoi scaricare i risultati di questa scansione?");
       if (r == true) {
           link.click()
-      }           } else
-                    if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "sctim" ) {
+      }           } else if (radio == '"lte"' && APIresponse.status == "ok" && carrier == "libero" && mnc == 1 && verificafake != "Si" ) 
+      {
+                        html = '<div class="card-group">';
+                       html = '<div class="card col-2" style="padding-top:10px;">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                        html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button  class='pure-material-button-contained'>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  '<b>LTE ITALY MAP:</b> <a href="https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+" target="_blank"><button class="pure-material-button-contained">LTE ITALY MAP</button></a>  <br />';
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>CELLTRACKER</button></a>  <br />";
+				 html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
+                         marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
+                               const inverseMatrix = 
+      (matrix) => {
+        let matrixInverted = [[]]
+
+        matrix.forEach(
+          (innerArray, indexOut) =>
+            innerArray.forEach(
+              (valueIn, indexIn) => {
+                if(matrixInverted[indexIn] === undefined) matrixInverted[indexIn] = []  
+                matrixInverted[indexIn][indexOut] = valueIn
+              }
+            )
+        )
+
+        return matrixInverted
+      }
+      
+      const rows = [
+        ['Latitudine', ...arraylat],
+        ['Longitudine', ...arraylon],
+        ['eNb', ...arrayenb],
+        ['Settori', ...arraysec],
+        ['Cell ID', ...arraycid]
+        
+      ];
+  let csvContent = "data:text/csv;charset=utf-8,";
+      inverseMatrix(rows).forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+      });
+
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "risultati.csv");
+      document.body.appendChild(link);
+      var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+      if (r == true) {
+          link.click()
+      }           }
+                   else if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "sctim" && verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto ))) 
+                   {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2"  style="padding-top:10px;">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
@@ -827,7 +911,54 @@ var defaultmarkericon = L.icon({
                       
                         
                         
-                    }  else if (radio == '"lte"' && APIresponse.status == "ok" && (carrier == "timers" || carrier == "sctim")) {
+                    } else if(radio == '"lte"' && APIresponse.status == "ok"  && carrier != "timers" && carrier != "sctim" && verificafake != "Si" ) 
+                    {
+                         html = '<div class="card-group">';
+                       html = '<div class="card col-2"  style="padding-top:10px;">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                         html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>CELLTRACKER</button></a>  <br />";
+			    html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+			    html += "<b>BAND:</b> " + band.fontcolor(colorebande) + "<br />";
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
+                         marker.bindTooltip(enodeb_c + ":" + sec + " " + band.fontcolor(colorebande) , {permanent: true, direction: 'bottom'}).openTooltip();
+                      
+                        
+                        
+                    }  else if (radio == '"lte"' && APIresponse.status == "ok" && (carrier == "timers" || carrier == "sctim") && verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto )  )) {
+                        html = '<div class="card-group">';
+                       html = '<div class="card col-2"  style="padding-top:10px;">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                        html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>CELLTRACKER</button></a>  <br />";
+			    html += "<b>CID:</b> " + cid + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>SECTOR:</b> " + sec + "<br />";
+
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTOR:</b> " + sec + "<br />").openPopup();
+                         marker.bindTooltip(enodeb_c + ":" + sec , {permanent: true, direction: 'bottom'}).openTooltip();
+                                       
+
+  }   else if (radio == '"lte"' && APIresponse.status == "ok" && (carrier == "timers" || carrier == "sctim") && verificafake != "Si") {
                         html = '<div class="card-group">';
                        html = '<div class="card col-2"  style="padding-top:10px;">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
@@ -850,7 +981,29 @@ var defaultmarkericon = L.icon({
                                        
 
   }
-			 else  if((radio == '"umts"' || radio == '"gsm"') && APIresponse.status == "ok") {
+			 else  if((radio == '"umts"' || radio == '"gsm"') && APIresponse.status == "ok" && verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto )  )) {
+                         html = '<div class="card-group">';
+                       html = '<div class="card col-2"  style="padding-top:10px;">';
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                           html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+APIresponse.lat+"/"+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY MAP</button></a>  <br />";
+				 html += "<b>CID:</b> " + cid + "<br />";
+                       
+                        html += "<b>ACCURACY:</b> " + APIresponse.accuracy + "<br />";
+                         html += "<b>ADDRESS:</b> " + APIresponse.address + "<br />";
+                        html += "<b>LAT:</b> " + APIresponse.lat + "<br />";
+                        html += "<b>LON:</b> " + APIresponse.lon + "<br /><br />";
+                        html += "</div>";
+
+                        $("#result").append(html);
+                        var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: defaultmarkericon}).addTo(map);
+                        marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br />").openPopup();
+                         marker.bindTooltip("<span>" + cid + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
+			
+			                    
+
+
+	
+	} else  if((radio == '"umts"' || radio == '"gsm"') && APIresponse.status == "ok" && verificafake != "Si") {
                          html = '<div class="card-group">';
                        html = '<div class="card col-2"  style="padding-top:10px;">';
                         html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+APIresponse.lat+","+APIresponse.lon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
@@ -900,7 +1053,7 @@ var defaultmarkericon = L.icon({
 
             medialon = medialon/arraylon.length;
             medialat = medialat/arraylat.length;
-            if(triangolazione == "si" && carrier != "libero" && (startcid != stopcid) && radio == '"lte"' ) {
+            if(triangolazione == "si" && carrier != "libero" && (startcid != stopcid) && radio == '"lte"' && verificafake == "Si"   && ((medialat >= latsinistrabasso && medialat <= latdestraalto) && (medialon >= lonsinistrabasso && medialon <= londestraalto )  ) ) {
 		     html = '<div class="card-group">';
                        html = '<div class="card col-2"  style="padding-top:10px;">';
                         html += "<b>TRIANGOLAZIONE</b>";
@@ -964,7 +1117,130 @@ $("#result").append(html);
       var r = confirm("Vuoi scaricare i risultati di questa scansione?");
       if (r == true) {
           link.click()
-      }     } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') ) {
+      }     } else if(triangolazione == "si" && carrier != "libero" && (startcid != stopcid) && radio == '"lte"' && verificafake != "Si" ) {
+		     html = '<div class="card-group">';
+                       html = '<div class="card col-2"  style="padding-top:10px;">';
+                        html += "<b>TRIANGOLAZIONE</b>";
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+medialat+","+medialon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                        
+                        html +=  "<b>LTE ITALY BASESTATION:</b> <a href='https://lteitaly.it/it/internal/map.php#bts="+mcc+""+mnc+"."+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY BASESTATION</button></a>  <br />";
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+medialat+"/"+medialon+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY MAP</button></a>  <br />";
+                        html +=  "<b>CELLTRACKER:</b> <a href='https://celltracker.it/bts/"+mcc+"/"+mnc+"/"+enodeb_c+"' target='_blank'><button class='pure-material-button-contained'>CELLTRACKER</button></a>  <br />";
+                 
+		    html += "<b>BANDS:</b> "  + "<span>" + uniquearrayband + "</span>" + "<br />";
+		    html += "<b>SECTORS:</b> " + arraysec + "<br />";
+                        html += "<b>ENODEB:</b> " + enodeb_c + "<br />";
+                        html += "<b>LAT:</b> " + medialat + "<br />";
+                        html += "<b>LON:</b> " + medialon + "<br /><br />";
+                    
+                        html += "</div>";
+
+$("#result").append(html);
+                   var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
+                marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br /><b>ENODEB:</b> " + enodeb_c + "<br /><b>SECTORS:</b> " + arraysec + "<br /><b>BANDS:</b> " + uniquearrayband + "<br />").openPopup();
+                marker.bindTooltip( "<span>" + enodeb_c + "</span>", {permanent: true, direction: 'bottom'}).openTooltip();
+                            const inverseMatrix = 
+      (matrix) => {
+        let matrixInverted = [[]]
+
+        matrix.forEach(
+          (innerArray, indexOut) =>
+            innerArray.forEach(
+              (valueIn, indexIn) => {
+                if(matrixInverted[indexIn] === undefined) matrixInverted[indexIn] = []  
+                matrixInverted[indexIn][indexOut] = valueIn
+              }
+            )
+        )
+
+        return matrixInverted
+      }
+      var settoriscansione1 = arraysec.join(";");
+      var settoriscansione = settoriscansione1.toString();
+      const rows = [
+        ['Latitudine', ...arraylat],
+        ['Longitudine', ...arraylon],
+        ['eNb', ...arrayenb],
+        ['Settori', ...arraysec],
+        ['Latitudine triangolazione', medialat],
+        ['Longitudine triangolazione', medialon], 
+        ['Cell ID', ...arraycid],
+        ['Settori totali', settoriscansione]
+      ];
+  let csvContent = "data:text/csv;charset=utf-8,";
+      inverseMatrix(rows).forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+      });
+
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "risultati.csv");
+      document.body.appendChild(link);
+      var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+      if (r == true) {
+          link.click()
+      }     } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') && verificafake == "Si"   && ((medialat >= latsinistrabasso && medialat <= latdestraalto) && (medialon >= lonsinistrabasso && medialon <= londestraalto )  ) ) {
+                    html = '<div class="card-group">';
+                       html = '<div class="card col-2"  style="padding-top:10px;">';
+                        html += "<b>TRIANGOLAZIONE</b>";
+                        html +=  "<b>MAPS:</b> <a href='http://maps.google.com/?q="+medialat+","+medialon+"' target='_blank'><button class='pure-material-button-contained'>MAPS</button></a>  <br />";
+                        
+                       
+                        html +=  "<b>LTE ITALY MAP:</b> <a href='https://lteitaly.it/it/internal/map.php#16/"+medialat+"/"+medialon+"' target='_blank'><button class='pure-material-button-contained'>LTE ITALY MAP</button></a>  <br />";
+                        
+                  
+                     
+                        html += "<b>LAT:</b> " + medialat + "<br />";
+                        html += "<b>LON:</b> " + medialon + "<br /><br />";
+                    
+                        html += "</div>";
+
+$("#result").append(html);
+		     var marker = L.marker([medialat, medialon], {icon: srb}).addTo(map);
+                marker.bindPopup("<b>LAT:</b> " + medialat + "<br /><b>LON:</b> " + medialon + "<br />" ).openPopup();
+                marker.bindTooltip( "BTS", {permanent: true, direction: 'bottom'}).openTooltip();
+ const inverseMatrix = 
+      (matrix) => {
+        let matrixInverted = [[]]
+
+        matrix.forEach(
+          (innerArray, indexOut) =>
+            innerArray.forEach(
+              (valueIn, indexIn) => {
+                if(matrixInverted[indexIn] === undefined) matrixInverted[indexIn] = []  
+                matrixInverted[indexIn][indexOut] = valueIn
+              }
+            )
+        )
+
+        return matrixInverted
+      }
+      
+      const rows = [
+        ['Latitudine', ...arraylat],
+        ['Longitudine', ...arraylon],
+        ['Latitudine triangolazione', medialat],
+        ['Longitudine triangolazione', medialon], 
+        ['Cell ID', ...arraycid]
+        
+      ];
+  let csvContent = "data:text/csv;charset=utf-8,";
+      inverseMatrix(rows).forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+      });
+
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "risultati.csv");
+      document.body.appendChild(link);
+      var r = confirm("Vuoi scaricare i risultati di questa scansione?");
+      if (r == true) {
+          link.click()
+      }  } else if(triangolazione == "si" && carrier != "libero"  && (startcid != stopcid) &&  (radio == '"umts"' || radio == '"gsm"') && verificafake != "Si") {
                     html = '<div class="card-group">';
                        html = '<div class="card col-2"  style="padding-top:10px;">';
                         html += "<b>TRIANGOLAZIONE</b>";
@@ -1061,6 +1337,8 @@ $("#result").append(html);
 	<input type="number" value="0" class="form-control" id="psc" placeholder="Psc" required>
 	     <input type="number" class="form-control" id="cidumts" placeholder="CidUmts" required  >
     <input type="number" class="form-control" id="rnc" placeholder="RNC" required>
+    <input type="text" class="form-control" id="coordinatedestra" placeholder="LatLng Destra" required>
+    <input type="text" class="form-control" id="coordinatesinistra" placeholder="LatLng Sinistra" required>
 	
         <select id="radio" class="form-control" onchange="miafunzione(this)">
              <option selected disabled>RADIO</option>
@@ -1091,6 +1369,12 @@ $("#result").append(html);
             <option value="no">NO</option>
             
           </select>
+          <select id="verificafake" class="form-control" >
+            <option selected disabled>VERIFICA FAKE</option>
+        <option value="Si">SI</option>
+              <option value="No">NO</option>
+              
+            </select>
 	    
         <button class="pure-material-button-contained" onclick="AllScan();showResults();">Go</button>
         </div>
@@ -1249,7 +1533,10 @@ L.control.layers({
         position: "topright"
     }).addTo(map);
 
- 
+    map.on("dblclick", function(e){
+        var mp = new L.Marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+        mp.bindPopup(e.latlng.lat + ',' + e.latlng.lng);
+ }); 
  var gpslayer = new L.LayerGroup().addTo(map);
  // Add the 'scale' control
     L.control.scale().addTo(map);
